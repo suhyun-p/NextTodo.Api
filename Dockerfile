@@ -20,3 +20,4 @@ ADD ${JAR_FILE} next-todo-api.jar
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/next-todo-api.jar"]
 
 # docker build -t next-todo-api .
+# docker run -p 5000:8080 next-todo-api

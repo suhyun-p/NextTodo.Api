@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface TodosService {
     List<TodoMain> todos();
-    Long updateTodo(Long id, TodosReq req);
+    Long updateTodo(Long id);
     Long addTodo(TodosReq req);
+    Long deleteTodo(Long id);
 }

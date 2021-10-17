@@ -11,13 +11,12 @@ import lombok.NoArgsConstructor;
 public class TodosReq {
     private String text;
     private String color;
-    private Boolean checked;
 
     public TodoMain toEntity() {
         return TodoMain.builder()
                 .text(this.text)
                 .color(this.color)
-                .checked(this.checked)
+                .checked(false)
                 .build();
     }
 }

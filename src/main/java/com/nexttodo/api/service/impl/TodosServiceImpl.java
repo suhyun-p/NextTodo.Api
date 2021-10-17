@@ -19,15 +19,23 @@ public class TodosServiceImpl implements TodosService {
     public List<TodoMain> todos() { return todosRepository.findAll(); }
 
     @Transactional
-    public Long updateTodo(Long id, TodosReq req) {
+    public Long addTodo(TodosReq req) {
+        return todosRepository.save(req.toEntity()).getId();
+    }
+
+    @Transactional
+    public Long updateTodo(Long id) {
         TodoMain todo = todosRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("No Data"));
-        todo.update(req);
+        todo.update();
         return id;
     }
 
     @Transactional
-    public Long addTodo(TodosReq req) {
-        return todosRepository.save(req.toEntity()).getId();
+    public Long deleteTodo(Long id) {
+        TodoMain todo = todosRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("No Data"));
+        todosRepository.delete(todo);
+        return id;
     }
 }

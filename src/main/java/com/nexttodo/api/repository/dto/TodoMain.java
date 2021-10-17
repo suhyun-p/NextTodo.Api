@@ -26,9 +26,7 @@ public class TodoMain {
     @Column()
     private Boolean checked;
 
-    public void update(TodosReq req) {
-        this.text = req.getText();
-        this.color = req.getColor();
-        this.checked = req.getChecked();
+    public void update() {
+        this.checked = !this.checked;
     }
 }

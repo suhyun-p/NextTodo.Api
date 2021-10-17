@@ -18,15 +18,22 @@ public class TodosController {
     TodosService todosService;
 
     @GetMapping("/todos")
-    public List<TodoMain> todos() { return todosService.todos(); }
-
-    @PutMapping("/todos/{id}")
-    public long updateTodo(@PathVariable long id, @RequestBody TodosReq req) {
-        return todosService.updateTodo(id, req);
+    public List<TodoMain> todos() {
+        return todosService.todos();
     }
 
     @PostMapping("/todos")
     public long addTodo(@RequestBody TodosReq req) {
         return todosService.addTodo(req);
+    }
+
+    @PatchMapping("/todos/{id}")
+    public long updateTodo(@PathVariable long id) {
+        return todosService.updateTodo(id);
+    }
+
+    @DeleteMapping("/todos/{id}")
+    public long deleteTodo(@PathVariable long id) {
+        return todosService.deleteTodo(id);
     }
 }
